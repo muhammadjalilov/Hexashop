@@ -1,0 +1,91 @@
+/* Table Styles */
+.table {
+    margin-top: 100px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.table thead th {
+    background-color: #343a40;
+    color: #fff;
+    text-align: left;
+    padding: 12px;
+}
+
+.table tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table .num {
+    text-align: right;
+}
+
+.total td {
+    font-weight: bold;
+}
+
+/* Image Styles */
+.table img {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Cart Form */
+.cart-form {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.cart-form form select,
+.cart-form form input[type="number"] {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 200px;
+}
+
+.cart-form form input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-form form input[type="submit"]:hover {
+    background-color: #e65a50;
+}
+
+.add-to-cart {
+    background: white; /* Remove default button styling */
+    border: none;
+    cursor: pointer; /* Make it look clickable */
+    color: inherit; /* Use the color of surrounding text */
+    font: inherit; /* Use the font of surrounding text */
+    padding: 0; /* Remove default padding */
+}
+
+.add-to-cart i {
+    padding: 10px;
+    margin-right: 5px; /* Space between icon and text */
+}

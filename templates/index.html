@@ -75,35 +75,46 @@
                     <div class="men-item-carousel">
                         <div class="owl-men-item owl-carousel">
                             {% for product in men %}
-                            <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="{% url 'product:product' product.slug %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a>
-                                            </li>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="{{ product.get_absolute_url }}"><i
+                                                        class="fa fa-eye"></i></a></li>
+                                                <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                                <li>
+                                                    <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                                        {% csrf_token %}
+                                                        <div style="display: none;">
+                                                            {{ form.quantity }}
+                                                            {{ form.override }}
+                                                        </div>
+                                                        <button type="submit" class="add-to-cart">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <img src="{{ product.image.url }}" alt="">
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>{{ product.name }}</h4>
+                                        <span>{{ product.price }}$</span>
+                                        <ul class="stars">
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
                                         </ul>
                                     </div>
-                                    <img src="{{ product.image.url }}" alt="">
                                 </div>
-                                <div class="down-content">
-                                    <h4>{{ product.name }}</h4>
-                                    <span>{{ product.price }}$</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
-                             {% endfor %}
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
-               
+
             </div>
         </div>
     </section>
@@ -127,30 +138,41 @@
                     <div class="women-item-carousel">
                         <div class="owl-women-item owl-carousel">
                             {% for product in women %}
-                            <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="{% url 'product:product' product.slug %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a>
-                                            </li>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="{{ product.get_absolute_url }}"><i
+                                                        class="fa fa-eye"></i></a></li>
+                                                <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                                <li>
+                                                    <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                                        {% csrf_token %}
+                                                        <div style="display: none;">
+                                                            {{ form.quantity }}
+                                                            {{ form.override }}
+                                                        </div>
+                                                        <button type="submit" class="add-to-cart">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <img src="{{ product.image.url }}" alt="">
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>{{ product.name }}</h4>
+                                        <span>${{ product.price }}</span>
+                                        <ul class="stars">
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
                                         </ul>
                                     </div>
-                                    <img src="{{ product.image.url }}" alt="">
                                 </div>
-                                <div class="down-content">
-                                    <h4>{{ product.name }}</h4>
-                                    <span>${{ product.price }}</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
                             {% endfor %}
                         </div>
                     </div>
@@ -178,30 +200,41 @@
                     <div class="kid-item-carousel">
                         <div class="owl-kid-item owl-carousel">
                             {% for product in kids %}
-                            <div class="item">
-                                <div class="thumb">
-                                    <div class="hover-content">
-                                        <ul>
-                                            <li><a href="{% url 'product:product' product.slug %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a>
-                                            </li>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="{{ product.get_absolute_url }}"><i
+                                                        class="fa fa-eye"></i></a></li>
+                                                <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
+                                                <li>
+                                                    <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                                        {% csrf_token %}
+                                                        <div style="display: none;">
+                                                            {{ form.quantity }}
+                                                            {{ form.override }}
+                                                        </div>
+                                                        <button type="submit" class="add-to-cart">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                        </button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <img src="{{ product.image.url }}" alt="">
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>{{ product.name }}</h4>
+                                        <span>${{ product.price }}</span>
+                                        <ul class="stars">
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
                                         </ul>
                                     </div>
-                                    <img src="{{ product.image.url }}" alt="">
                                 </div>
-                                <div class="down-content">
-                                    <h4>{{ product.name }}</h4>
-                                    <span>${{ product.price }}</span>
-                                    <ul class="stars">
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                        <li><i class="fa fa-star"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
                             {% endfor %}
                         </div>
                     </div>
@@ -285,17 +318,17 @@
         <div class="container">
             <div class="row images">
                 {% for i in socials %}
-                <div class="col-2">
-                    <div class="thumb">
-                        <div class="icon">
-                            <a href="http://instagram.com">
-                                <h6>{{ i.name }}</h6>
-                                <i class="fa fa-instagram"></i>
-                            </a>
+                    <div class="col-2">
+                        <div class="thumb">
+                            <div class="icon">
+                                <a href="http://instagram.com">
+                                    <h6>{{ i.name }}</h6>
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                            <img src="{% static i.url %}" alt="no image">
                         </div>
-                        <img src="{% static i.url %}" alt="no image">
                     </div>
-                </div>
                 {% endfor %}
             </div>
         </div>

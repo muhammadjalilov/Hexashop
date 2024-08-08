@@ -41,9 +41,19 @@
                             <div class="thumb">
                                 <div class="hover-content">
                                     <ul>
-                                        <li><a href="{% url 'product:product' p.slug %}"><i class="fa fa-eye"></i></a></li>
+                                        <li><a href="{{ p.get_absolute_url }}"><i class="fa fa-eye"></i></a></li>
                                         <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
-                                        <li><a href="single-product.html"><i class="fa fa-shopping-cart"></i></a>
+                                        <li>
+                                            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                                {% csrf_token %}
+                                                <div style="display: none;">
+                                                    {{ form.quantity }}
+                                                    {{ form.override }}
+                                                </div>
+                                                <button type="submit" class="add-to-cart">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
+                                            </form>
                                         </li>
                                     </ul>
                                 </div>

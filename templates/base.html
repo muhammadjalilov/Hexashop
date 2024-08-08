@@ -10,16 +10,17 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
           rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <title>{% block title %}{% endblock %}</title>
 
-
-   <!-- Additional CSS Files -->
+    <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'css/templatemo-hexashop.css' %}">
     <link rel="stylesheet" href="{% static 'css/owl-carousel.css' %}">
     <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <!--
     
     TemplateMo 571 Hexashop
@@ -42,7 +43,7 @@
 <!-- ***** Preloader End ***** -->
 
 
-    <!-- ***** Header Area Start ***** -->
+<!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
     <div class="container">
         <div class="row">
@@ -78,6 +79,9 @@
                             </ul>
                         </li>
                         <li class="scroll-to-section"><a href="index.html">Explore</a></li>
+                        <li class="scroll-to-section"><a href="{% url 'cart:cart_detail' %}"><i class="bi bi-cart h3"></i></a>
+                        </li>
+
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -90,12 +94,12 @@
 </header>
 <!-- ***** Header Area End ***** -->
 {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 {% block content %}
 {% endblock %}
 
@@ -106,7 +110,7 @@
             <div class="col-lg-3">
                 <div class="first-item">
                     <div class="logo">
-                        <img src="assets/images/white-logo.png" alt="hexashop ecommerce templatemo">
+                        <img src="{% static 'images/white-logo.png' %}" alt="hexashop ecommerce templatemo">
                     </div>
                     <ul>
                         <li><a href="#">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a></li>
@@ -160,20 +164,20 @@
 </footer>
 
 
- <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
-    <script src="{% static 'js/popper.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/owl-carousel.js' %}"></script>
-    <script src="{% static 'js/accordions.js' %}"></script>
-    <script src="{% static 'js/datepicker.js' %}"></script>
-    <script src="{% static 'js/scrollreveal.min.js' %}"></script>
-    <script src="{% static 'js/waypoints.min.js' %}"></script>
-    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
-    <script src="{% static 'js/imgfix.min.js' %}"></script>
-    <script src="{% static 'js/slick.js' %}"></script>
-    <script src="{% static 'js/lightbox.js' %}"></script>
-    <script src="{% static 'js/isotope.js' %}"></script>
-    <script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+<script src="{% static 'js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl-carousel.js' %}"></script>
+<script src="{% static 'js/accordions.js' %}"></script>
+<script src="{% static 'js/datepicker.js' %}"></script>
+<script src="{% static 'js/scrollreveal.min.js' %}"></script>
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'js/imgfix.min.js' %}"></script>
+<script src="{% static 'js/slick.js' %}"></script>
+<script src="{% static 'js/lightbox.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
 
 <script>
 

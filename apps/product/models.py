@@ -2,7 +2,8 @@ from datetime import timedelta
 
 from django.core.validators import MaxLengthValidator, MaxValueValidator, MinValueValidator
 from django.db.models import CharField, TextField, FloatField, ForeignKey, CASCADE, ImageField, SlugField, \
-    OneToOneField, IntegerField, DateTimeField
+    OneToOneField, IntegerField, DateTimeField, BooleanField, Index
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import slugify
 
@@ -15,14 +16,32 @@ class Product(BaseModel):
     price = FloatField(verbose_name='Price')
     category = ForeignKey('product.Category', on_delete=CASCADE, related_name='products')
     image = ImageField(upload_to='products/', verbose_name='Product Image')
-    slug = SlugField(db_index=True, unique=True,blank=True)
+    slug = SlugField(db_index=True, blank=True)
+    available = BooleanField(default=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        indexes = [
+            Index(fields=['id', 'slug']),
+            Index(fields=['name']),
+            Index(fields=['-created_at'])
+        ]
 
     def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
+        unique_slug = self.slug
+        num = 1
+        while Product.objects.filter(slug=unique_slug).exists():
+            unique_slug = f'{self.slug}-{num}'
+            num += 1
+        self.slug = unique_slug
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('product:product', args=[self.slug])
 
 
 class Category(BaseModel):

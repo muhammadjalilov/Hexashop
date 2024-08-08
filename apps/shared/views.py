@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+from apps.cart.forms import CartAddProductForm
 from apps.product.models import Category
 from apps.users.models import Services
 
@@ -17,6 +18,7 @@ class HomeView(TemplateView):
         context['men'] = Category.objects.get(name='Men').products.all().order_by('-created_at')[:5]
         context['women'] = Category.objects.get(name='Women').products.all().order_by('-created_at')[:5]
         context['kids'] = Category.objects.get(name='Kids').products.all().order_by('-created_at')[:5]
+        context['form'] = CartAddProductForm()
         socials = [
             {'name': 'Fashion', 'url': f'images/instagram-01.jpg'},
             {'name': 'New', 'url': f'images/instagram-02.jpg'},
