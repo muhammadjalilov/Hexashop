@@ -1,0 +1,24 @@
+<form id="subscribe" action="{% url 'users:subscribe-request' %}" method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-lg-5">
+            <fieldset>
+                {{ subscribe_form.fullname.errors }}
+                {{ subscribe_form.fullname }}
+            </fieldset>
+        </div>
+        <div class="col-lg-5">
+            <fieldset>
+                {{ subscribe_form.email.errors }}
+                {{ subscribe_form.email }}
+            </fieldset>
+        </div>
+        <div class="col-lg-2">
+            <fieldset>
+                <button type="submit" id="form-submit" class="main-dark-button">
+                    <i class="fa fa-paper-plane"></i>
+                </button>
+            </fieldset>
+        </div>
+    </div>
+</form>

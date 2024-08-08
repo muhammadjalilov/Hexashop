@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block title %}Hexashop - Product Detail Page{% endblock %}
+
+{% block content %}
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <h2>Single Product Page</h2>
+                        <span>Awesome &amp; Creative HTML CSS layout by TemplateMo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+
+    <!-- ***** Product Area Starts ***** -->
+    <section class="section" id="product">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                <div class="left-images">
+                    <img src="{{ product.image.url }}" alt="no image">
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="right-content">
+                    <h4>{{ product.name }}</h4>
+                    <span class="price">${{ product.price }}</span>
+                    <ul class="stars">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                    </ul>
+                    <span>{{ product.description }}</span>
+                    <div class="quote">
+                        <i class="fa fa-quote-left"></i><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiuski smod.</p>
+                    </div>
+                    <div class="quantity-content">
+                        <div class="left-content">
+                            <h6>No. of Orders</h6>
+                        </div>
+                        <div class="right-content">
+                            <div class="quantity buttons_added">
+                                <input type="button" value="-" class="minus"><input type="number" step="1" min="1" max="" name="quantity" value="1" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total">
+                        <h4>Total: $ <span id="total-price">{{ product.price }}</span></h4>
+                        <div class="main-border-button"><a href="#">Add To Cart</a></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Product Area Ends ***** -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const pricePerUnit = {{ product.price }}; // Replace with the actual product price
+            const qtyInput = document.querySelector('.input-text.qty');
+            const minusButton = document.querySelector('.minus');
+            const plusButton = document.querySelector('.plus');
+            const totalPriceSpan = document.getElementById('total-price');
+
+            function updateTotalPrice() {
+                const quantity = parseInt(qtyInput.value);
+                const totalPrice = pricePerUnit * quantity;
+                totalPriceSpan.textContent = totalPrice.toFixed(2);
+            }
+
+            minusButton.addEventListener('click', function () {
+                if (qtyInput.value > 1) {
+                    qtyInput.value--;
+                    updateTotalPrice();
+                }
+            });
+
+            plusButton.addEventListener('click', function () {
+                qtyInput.value++;
+                updateTotalPrice();
+            });
+
+            qtyInput.addEventListener('change', function () {
+                if (qtyInput.value < 1) {
+                    qtyInput.value = 1;
+                }
+                updateTotalPrice();
+            });
+
+            // Initialize the total price on page load
+            updateTotalPrice();
+        });
+    </script>
+{% endblock %}
