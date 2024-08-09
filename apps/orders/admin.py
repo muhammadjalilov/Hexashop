@@ -5,7 +5,7 @@ from apps.orders.models import Order, OrderItem
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['user', 'total_amount']
+    list_display = ['user']
     list_display_links = ['user']
 
 

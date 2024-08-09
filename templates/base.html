@@ -79,7 +79,57 @@
                             </ul>
                         </li>
                         <li class="scroll-to-section"><a href="index.html">Explore</a></li>
-                        <li class="scroll-to-section"><a href="{% url 'cart:cart_detail' %}"><i class="bi bi-cart h3"></i></a>
+
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle d-flex align-items-center" id="cartDropdown"
+                               data-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-cart3 h4 mr-2"></i>
+                                {% with total_items=cart|length %}
+                                    {% if total_items > 0 %}
+                                        {{ total_items }} item{{ total_items|pluralize }}, ${{ cart.get_total_price }}
+                                    {% else %}
+                                        Your cart is empty.
+                                    {% endif %}
+                                {% endwith %}
+                                <span class="caret ml-1"></span>
+                            </a>
+
+                            {% with total_items=cart|length %}
+                                {% if total_items > 0 %}
+                                    <ul class="dropdown-menu dropdown-cart p-3" aria-labelledby="cartDropdown">
+                                        {% for item in cart %}
+                                            <li class="dropdown-item d-flex justify-content-between align-items-center">
+                                                <div class="item-left d-flex align-items-center">
+                                                    <img src="{{ item.product.image.url }}"
+                                                         alt="{{ item.product.name }}" class="img-fluid"
+                                                         style="width: 50px; height: 50px; margin-right: 10px;">
+                                                    <div class="item-info">
+                                                        <span class="font-weight-bold">{{ item.product.name|truncatewords:2 }}</span>
+                                                        <br>
+                                                        <span>Price: ${{ item.product.price }}</span>
+                                                        <br>
+                                                        <span>Qty: {{ item.quantity }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="item-right ml-4">
+                                                    <form action="{% url 'cart:cart_remove' item.product.id %}"
+                                                          method="post">
+                                                        <button type="submit" class="btn btn-link p-0 text-danger">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                        {% csrf_token %}
+                                                    </form>
+                                                </div>
+                                            </li>
+                                            <li class="dropdown-divider"></li>
+                                        {% endfor %}
+                                        <li class="text-center">
+                                            <a href="{% url 'cart:cart_detail' %}" class="btn btn-primary">View
+                                                Cart</a>
+                                        </li>
+                                    </ul>
+                                {% endif %}
+                            {% endwith %}
                         </li>
 
                     </ul>

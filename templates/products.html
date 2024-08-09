@@ -44,7 +44,7 @@
                                         <li><a href="{{ p.get_absolute_url }}"><i class="fa fa-eye"></i></a></li>
                                         <li><a href="single-product.html"><i class="fa fa-star"></i></a></li>
                                         <li>
-                                            <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                            <form action="{% url "cart:cart_add" p.id %}" method="post">
                                                 {% csrf_token %}
                                                 <div style="display: none;">
                                                     {{ form.quantity }}
