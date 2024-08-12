@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+    Thank you
+{% endblock %}
+{% block content %}
+    <div class="container" style="margin-top:120px">
+        <h1>Thank you</h1>
+        <p class="lead">Your order has been successfully completed. Your order number is
+            <strong>{{ order_item.order.id }}</strong>.</p>
+        <a href="{% url 'shared:home' %}">HomePage</a>
+    </div>
+{% endblock %}

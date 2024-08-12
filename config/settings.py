@@ -47,7 +47,10 @@ DJANGO_APPS = [
 
 THIRD_PARTY_APPS = [
     "phonenumber_field",
-    'django_extensions'
+    'django_extensions',
+    "crispy_forms",
+    "crispy_bootstrap4",
+
 ]
 
 INSTALLED_APPS = DJANGO_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
@@ -79,7 +82,6 @@ TEMPLATES = [
                 # Custom context processors
                 'apps.users.context_processors.subscribe_form',
                 'apps.cart.context_processors.cart'
-
             ],
         },
     },
@@ -132,7 +134,7 @@ USE_TZ = True
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "assets/main"]
+STATICFILES_DIRS = [BASE_DIR / "assets/main/"]
 
 MEDIA_URL = '/media/'
 
@@ -143,4 +145,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 CART_SESSION_ID = 'cart'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"

@@ -2,7 +2,7 @@
 {% block title %}Hexashop - Contact Page{% endblock %}
 
 {% block content %}
-    
+
     <!-- ***** Main Banner Area Start ***** -->
     <div class="page-heading about-page-heading" id="top">
         <div class="container">
@@ -22,14 +22,16 @@
     <div class="contact-us">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                     <div id="map">
-                      <iframe src="https://maps.app.goo.gl/BrN2srb9Wthk8qYq7" width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>
-                      <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
-                      
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2996.2222265911964!2d69.22616027621194!3d41.32578079981402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8bb7a0ebbae3%3A0xf9e01b5d45fc68cd!2sPDP%20Academy!5e0!3m2!1sru!2s!4v1723222714182!5m2!1sru!2s"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
+
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                     <div class="section-heading">
                         <h2>Say Hello. Don't Be Shy!</h2>
                         <span>Details to details is what makes Hexashop different from the other themes.</span>
@@ -37,30 +39,31 @@
                     <form id="contact" action="" method="post">
                         {% csrf_token %}
                         <div class="row">
-                          <div class="col-lg-6">
-                            <fieldset class="mb-4">
-                              {{ form.fullname.errors }}
-                              {{ form.fullname }}
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-6">
-                            <fieldset class="mb-4">
-                                {{ form.email.errors }}
-                                {{ form.email }}
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-12">
-                            <fieldset class="mb-2">
-                              {{ form.feedback }}
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-12">
-                            <fieldset>
-                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
-                            </fieldset>
-                          </div>
+                            <div class="col-lg-6">
+                                <fieldset class="mb-4">
+                                    {{ form.fullname.errors }}
+                                    {{ form.fullname }}
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6">
+                                <fieldset class="mb-4">
+                                    {{ form.email.errors }}
+                                    {{ form.email }}
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset class="mb-2">
+                                    {{ form.feedback }}
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="main-dark-button"><i
+                                            class="fa fa-paper-plane"></i></button>
+                                </fieldset>
+                            </div>
                         </div>
-                      </form>
+                    </form>
                 </div>
             </div>
         </div>
@@ -76,9 +79,9 @@
                         <h2>By Subscribing To Our Newsletter You Can Get 30% Off</h2>
                         <span>Details to details is what makes Hexashop different from the other themes.</span>
                     </div>
-                    
+
                     {% include 'users/subscribe.html' %}
-                    
+
                 </div>
                 <div class="col-lg-4">
                     <div class="row">
@@ -93,7 +96,8 @@
                             <ul>
                                 <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
                                 <li>Email:<br><span>info@company.com</span></li>
-                                <li>Social Media:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a href="#">Behance</a>, <a href="#">Linkedin</a></span></li>
+                                <li>Social Media:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a
+                                        href="#">Behance</a>, <a href="#">Linkedin</a></span></li>
                             </ul>
                         </div>
                     </div>

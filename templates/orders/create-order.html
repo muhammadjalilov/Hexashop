@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+    <div class="container" style="margin-top: 150px;">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="mb-4">Checkout</h1>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h3 class="mb-0">Your Order</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group mb-3">
+                            {% for item in cart %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ item.quantity }}x {{ item.product.name }}
+                                    <span class="badge bg-primary rounded-pill">${{ item.total_price }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <p class="h5">Total: ${{ cart.get_total_price }}</p>
+                    </div>
+                </div>
+                <form method="post" class="order-form">
+                    <div class="mb-3">
+                        {{ form }}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Place Order</button>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

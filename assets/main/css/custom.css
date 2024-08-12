@@ -89,3 +89,82 @@
     padding: 10px;
     margin-right: 5px; /* Space between icon and text */
 }
+
+/* Add to your CSS file */
+.order-form {
+    margin-top: 2rem;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+/* Add this to your CSS file or within a <style> block in the HTML template */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.main-banner {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 10px;
+}
+
+.order-item img {
+    border-radius: 4px;
+    margin-right: 20px;
+    width: 150px;
+    height: auto;
+}
+
+.order-item-details {
+    flex: 1;
+}
+
+.order-item-details h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.order-item-details p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.order-item-details .price {
+    font-weight: bold;
+    color: #333;
+}
+
+.total-cost {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+}

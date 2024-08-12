@@ -1,15 +1,13 @@
-from django.core.validators import MinValueValidator
 from django.db.models import ForeignKey, CASCADE, BigIntegerField, DecimalField, CharField, BooleanField, Index, \
-    PositiveIntegerField
+    PositiveIntegerField, SET_NULL
 
-from apps import users
 from apps.shared.models import BaseModel
+from apps.users.models import ClientDetails
 
 
 class Order(BaseModel):
-    user = ForeignKey('users.User', on_delete=CASCADE, related_name='orders')
-    postal_code = CharField(max_length=20)
-    city = CharField(max_length=100)
+    client = ForeignKey(ClientDetails, on_delete=SET_NULL, null=True,
+                        verbose_name='client', related_name='client_details')
     paid = BooleanField(default=False)
 
     class Meta:

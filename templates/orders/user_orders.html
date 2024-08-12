@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ request.user.username|title }} - Orders{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row main-banner">
+            {% if orders.all %}
+                {% for order in orders.all %}
+                    <div class="col-md-10">
+                        {% for item in order.items.all %}
+                            <div class="card">
+                                <img src="{{ item.product.image.url }}" class="card-img-top" alt="Product Image"
+                                     style="max-width: 300px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ item.product.name }}</h5>
+                                    <p class="card-text">{{ item.product.description }}</p>
+                                    <p class="card-text"><b>Quantity:</b> {{ item.quantity }}</p>
+                                    <p class="card-text"><b>Per Price:</b> {{ item.price }}</p>
+                                    <p class="card-text font-weight-bold">Price: {{ item.get_cost }}</p>
+                                    <p class="card-text"><b>Paid:</b> {% if order.paid %}✅{% else %}❌{% endif %}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-md-10 mb-2">
+                        <div class="alert alert-info" role="alert">
+                            <strong>Total cost:</strong> {{ order.get_total_cost }}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h1>No orders yet</h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}SignUp-Page{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="main-banner row" id="top">
+            <div class="col-lg-6">
+                <h1>SignUp</h1><br>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form }}<br>
+                    <button type="submit" class="btn btn-outline-primary">SignUp</button>
+                    <p></p>
+                    <p>Already have an account? <a href="{% url 'users:login' %}">SignIn</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
