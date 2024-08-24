@@ -44,7 +44,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <img src="{{ cat.image.url }}" alt="no image">
+                                            {% if cat.image %}
+                                                <img src="{{ cat.image.url }}" alt="no image">
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -96,7 +98,9 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <img src="{{ product.image.url }}" alt="">
+                                        {% if product.image %}
+                                            <img src="{{ product.image.url }}" alt="">
+                                        {% endif %}
                                     </div>
                                     <div class="down-content">
                                         <h4>{{ product.name }}</h4>
@@ -145,7 +149,7 @@
                                                 <li><a href="{{ product.get_absolute_url }}"><i
                                                         class="fa fa-eye"></i></a></li>
                                                 <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                
+
                                                 <li>
                                                     <form action="{% url "cart:cart_add" product.id %}" method="post">
                                                         {% csrf_token %}
@@ -158,10 +162,12 @@
                                                         </button>
                                                     </form>
                                                 </li>
-                                                
+
                                             </ul>
                                         </div>
-                                        <img src="{{ product.image.url }}" alt="">
+                                        {% if product.image %}
+                                            <img src="{{ product.image.url }}" alt="">
+                                        {% endif %}
                                     </div>
                                     <div class="down-content">
                                         <h4>{{ product.name }}</h4>
@@ -223,7 +229,9 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <img src="{{ product.image.url }}" alt="">
+                                        {% if product.image %}
+                                            <img src="{{ product.image.url }}" alt="">
+                                        {% endif %}
                                     </div>
                                     <div class="down-content">
                                         <h4>{{ product.name }}</h4>

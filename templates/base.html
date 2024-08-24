@@ -103,9 +103,11 @@
                                         {% for item in cart %}
                                             <li class="dropdown-item d-flex justify-content-between align-items-center">
                                                 <div class="item-left d-flex align-items-center">
-                                                    <img src="{{ item.product.image.url }}"
-                                                         alt="{{ item.product.name }}" class="img-fluid"
-                                                         style="width: 50px; height: 50px; margin-right: 10px;">
+                                                    {% if item.product.image %}
+                                                        <img src="{{ item.product.image.url }}"
+                                                             alt="{{ item.product.name }}" class="img-fluid"
+                                                             style="width: 50px; height: 50px; margin-right: 10px;">
+                                                    {% endif %}
                                                     <div class="item-info">
                                                         <span class="font-weight-bold">{{ item.product.name|truncatewords:2 }}</span>
                                                         <br>

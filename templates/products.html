@@ -57,7 +57,9 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <img src="{{ p.image.url }}" alt="">
+                                {% if p.image %}
+                                    <img src="{{ p.image.url }}" alt="">
+                                {% endif %}
                             </div>
                             <div class="down-content">
                                 <h4>{{ p.name }}</h4>

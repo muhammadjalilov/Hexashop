@@ -1,11 +1,13 @@
 from django.contrib.auth import get_user_model
+from django.core.cache import cache
+from django.db.models import Prefetch
 from django.shortcuts import render
 
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
 from apps.cart.forms import CartAddProductForm
-from apps.product.models import Category
+from apps.product.models import Category, Product
 from apps.users.models import Services
 
 
@@ -14,20 +16,30 @@ class HomeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.all()
-        context['men'] = Category.objects.get(name='Men').products.all().order_by('-created_at')[:5]
-        context['women'] = Category.objects.get(name='Women').products.all().order_by('-created_at')[:5]
-        context['kids'] = Category.objects.get(name='Kids').products.all().order_by('-created_at')[:5]
+
+        categories = Category.objects.all().prefetch_related(
+            Prefetch('products', queryset=Product.objects.all())
+        )
+
+        context['categories'] = categories
+
+        context['men'] = next((category.products.all()[:5] for category in categories if category.name == 'Men'), [])
+        context['women'] = next((category.products.all()[:5] for category in categories if category.name == 'Women'),
+                                [])
+        context['kids'] = next((category.products.all()[:5] for category in categories if category.name == 'Kids'), [])
+
         context['form'] = CartAddProductForm()
+
         socials = [
-            {'name': 'Fashion', 'url': f'images/instagram-01.jpg'},
-            {'name': 'New', 'url': f'images/instagram-02.jpg'},
-            {'name': 'Brand', 'url': f'images/instagram-03.jpg'},
-            {'name': 'Makeup', 'url': f'images/instagram-04.jpg'},
-            {'name': 'Leather', 'url': f'images/instagram-05.jpg'},
-            {'name': 'Bag', 'url': f'images/instagram-06.jpg'}
+            {'name': 'Fashion', 'url': 'images/instagram-01.jpg'},
+            {'name': 'New', 'url': 'images/instagram-02.jpg'},
+            {'name': 'Brand', 'url': 'images/instagram-03.jpg'},
+            {'name': 'Makeup', 'url': 'images/instagram-04.jpg'},
+            {'name': 'Leather', 'url': 'images/instagram-05.jpg'},
+            {'name': 'Bag', 'url': 'images/instagram-06.jpg'}
         ]
         context['socials'] = socials
+
         return context
 
 
