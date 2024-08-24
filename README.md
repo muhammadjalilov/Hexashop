@@ -78,5 +78,6 @@ If you would like to contribute to the Hexashop project, please follow these ste
 4. Push to the branch (`git push origin feature-branch`).
 5. Create a new Pull Request.
 
-Please ensure that your code follows the existing coding style and includes appropriate tests.
+## Contact
 
+For any questions or suggestions, please contact [mjalilov2004@gmail.com].
